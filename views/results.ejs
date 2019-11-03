@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Pixabay Search (Express Version) </title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js" ></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    </head>
+    <style>
+        body 
+        {
+            text-align: center;
+            background-color:powderblue;
+        }
+        #header
+        {
+            background-color:black;
+            color:white;
+        }
+        img 
+        {
+            border-radius: 20px;
+        }
+        #img
+        {
+            display:flex;
+            justify-content:center;
+        }
+        footer
+        {
+            text-align: center;
+        }
+    </style>
+    <body>
+
+        <h1> Pixabay Search Results </h1>
+        
+        <form action="/results">
+            
+            Keyword: <input type="text" name="keyword"><br>
+            Orientation: 
+            <select id = "orientation">
+            <option> Horizontal</option>
+            <option> Vertical</option>
+            </select>
+            <button> Search! </button>
+            
+        </form> <br>
+        <table id = "img">
+            <tr>
+                <td><img src='<%= images.hits[0].webformatURL %>' width='200'></td>
+                <td><img src='<%= images.hits[1].webformatURL %>' width='200'></td>
+                <td><img src='<%= images.hits[2].webformatURL %>' width='200'></td>
+                <td><img src='<%= images.hits[3].webformatURL %>' width='200'></td>
+            </tr>
+            <tr>
+                <td>Likes: <%= images.hits[0].likes %></td>
+                <td>Likes: <%= images.hits[1].likes %></td>
+                <td>Likes: <%= images.hits[2].likes %></td>
+                <td>Likes: <%= images.hits[3].likes %></td>
+            </tr>
+        </table>
+        <script>
+        var orientation = document.getElementById("#orientation").val();
+            if(orientation == 'Vertical')
+            {
+                document.getElementById("img").style.display = "inline";
+            }
+            else
+            {
+                document.getElementById("img").style.display = "flex";
+            }
+        </script>
+    </body>
+</html>
